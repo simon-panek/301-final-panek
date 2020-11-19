@@ -32,7 +32,7 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const generateLegend = () => {
-  // Solution code here ...
+  $('form').append('<legend>About You</legend>');
 }
 
 ///////////////////////////////////////////////////
