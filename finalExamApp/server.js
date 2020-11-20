@@ -44,34 +44,22 @@ client.connect()
 
 // Functions ///////////////////////////////////////////////////
 
-//let AllPokemonArray = []; //global variable
-
 function pokemonApiRender (req, res) {
   try {
     let url = 'https://pokeapi.co/api/v2/pokemon/';
 
     superagent.get(url)
       .then (data => {
-        //console.log('data.body', data.body);
-        //console.log('pokemonCharacter.name', data.body.results[0].name);
         let testArray = [];
         data.body.results.map(pokemonCharacter => {
-          //console.log('pokeChar.name', pokemonCharacter.name);
           testArray.push(new Pokemon (pokemonCharacter));
         })
-        //console.log('testArray', testArray);
         return testArray;
       })
       .then(results => {
-        //results = ['g', 'c', 'z', 'k', 'a', 'l', 'd', 's'];
-        // console.log('results', results);
         let nameArray = results.map (a => a.name);
-        //console.log('presort nameArray', nameArray);
         nameArray.sort();
-        //results.body.results.sort((a, b) => (a[name] > b[name]) ? 1 : -1);
-        // console.log('sorted nameArray', nameArray);
         res.render('pages/searches/show', { apiResults: nameArray});
-
       })
       .catch(err => {
         console.log('Something went terribly wrong with the data:', err);
@@ -80,21 +68,16 @@ function pokemonApiRender (req, res) {
   catch(err) {
     console.log('Something went terribly wrong with superagent:', err);
   }
-
 }
 
 function Pokemon(info) {
   this.name = info.name;
-  //AllPokemonArray.push(this);
-  //console.log('this.name', this.name);
 }
 
 function saveFavorite (req, res) {
   try {
-    //console.log('req.body.name', req.body.name);
     let SQL = 'INSERT INTO pokemon (name) VALUES ($1);';
     let values = [req.body.name];
-
     client.query (SQL, values)
       .then(() => {
         res.redirect('/');
@@ -113,14 +96,11 @@ function showFavorites (req, res) {
     let SQL = 'SELECT DISTINCT name FROM pokemon';
     client.query(SQL)
       .then(result => {
-        //console.log('result.rows', result.rows);
-        //console.log('result.rows', result.rows[0].name);
         let storedPoke = [];
         result.rows.forEach (row => {
           storedPoke.push(row.name);
         })
         storedPoke.sort();
-        // console.log('storedPoke', storedPoke);
         res.render('pages/favorites', { savedPokemon: storedPoke });
       })
       .catch(err => {

@@ -21,7 +21,6 @@
 }
 
 .favorite-section ul {
-  /* border: yellow 1px solid; */
   font-size: 6vw;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   list-style-type: square;
@@ -33,7 +32,6 @@
 }
 
 .show-section {
-  /* border: solid 1px orange; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,7 +39,6 @@
 }
 
 .show-form {
-  /* border: 1px solid blue; */
   margin: 2vw;
   text-align: center;
 
