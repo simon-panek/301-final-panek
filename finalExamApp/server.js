@@ -23,12 +23,11 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 
-// Routes //////////////////////////////////////////////////////
+// Routes ////////////////////////////////////////////////////////
 
 app.get('/', pokemonApiRender);
 app.post('/pokemon', saveFavorite);
-
-
+app.get('/favorites', showFavorites);
 
 // Database and Server Link /////////////////////////////////////
 
@@ -100,8 +99,33 @@ function saveFavorite (req, res) {
       .then(() => {
         res.redirect('/');
       })
+      .catch(err => {
+        console.log('Something went terribly wrong with the query:', err);
+      })
+  }
+  catch(err) {
+    console.log('Something went wrong with the database:', err);
+  }
+}
 
-
+function showFavorites (req, res) {
+  try {
+    let SQL = 'SELECT * FROM pokemon';
+    client.query(SQL)
+      .then(result => {
+        //console.log('result.rows', result.rows);
+        //console.log('result.rows', result.rows[0].name);
+        let storedPoke = [];
+        result.rows.forEach (row => {
+          storedPoke.push(row.name);
+        })
+        storedPoke.sort();
+        console.log('storedPoke', storedPoke);
+        res.render('pages/favorites', { savedPokemon: storedPoke });
+      })
+      .catch(err => {
+        console.log('Something went terribly wrong with the query:', err);
+      })
   }
   catch(err) {
     console.log('Something went wrong with the database:', err);
