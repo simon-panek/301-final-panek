@@ -26,7 +26,7 @@ app.use(methodOverride('_method'));
 // Routes //////////////////////////////////////////////////////
 
 app.get('/', pokemonApiRender);
-
+app.post('/pokemon', saveFavorite);
 
 
 
@@ -88,4 +88,22 @@ function Pokemon(info) {
   this.name = info.name;
   //AllPokemonArray.push(this);
   //console.log('this.name', this.name);
+}
+
+function saveFavorite (req, res) {
+  try {
+    //console.log('req.body.name', req.body.name);
+    let SQL = 'INSERT INTO pokemon (name) VALUES ($1);';
+    let values = [req.body.name];
+
+    client.query (SQL, values)
+      .then(() => {
+        res.redirect('/');
+      })
+
+
+  }
+  catch(err) {
+    console.log('Something went wrong with the database:', err);
+  }
 }
