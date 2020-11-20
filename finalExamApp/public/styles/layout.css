@@ -1,0 +1,27 @@
+/* @media (min-width: 360px) { */
+  body {
+    min-width: 360 px;
+    background-color: rgb(22, 65, 22);
+    /* min-height: 740px;
+    max-height: 740px; */
+  }
+/* } */
+
+header {
+  background-color: rgb(19, 19, 19);
+  color: rgb(196, 193, 193);
+  height: 15vw;
+  text-align: center;
+  font-size: 7.5vw;
+  line-height: 15vw;
+}
+
+footer {
+  background-color: rgb(19,19,19);
+  height: 5vw;
+  text-align: center;
+  font-size: 2vw;
+  line-height: 5vw;
+  color: rgb(196, 193, 193);
+  
+}

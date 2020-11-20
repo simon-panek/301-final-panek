@@ -2,14 +2,14 @@
 <html>
   <head>
     <title>Favorite Pokemon</title>
-    <link href="" rel="stylesheet" type="text/css">
+    <link href="/styles/base.css" rel="stylesheet" type="text/css">
   </head>
-  <body>
+  <body> 
     <header>
-
+      <h1>Favorites</h1>
     </header>
-    <main>
-      <section>
+    <main class="favorite-main">
+      <section class="favorite-section">
         <% for (let i=0; i < savedPokemon.length; i++){ %>
         <ul>
           <li><%= savedPokemon[i] %></li>
@@ -17,5 +17,8 @@
         <% } %>
       </section>
     </main>
+    <footer>
+      <p>&copy 2020 SP</p>
+    </footer>
   </body>
 </html>

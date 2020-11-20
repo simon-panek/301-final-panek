@@ -18,7 +18,7 @@ const client = new pg.Client(DATABASE_URL);
 const methodOverride = require('method-override');
 
 app.use(cors());
-app.use(express.static('.public'));
+app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
@@ -69,7 +69,7 @@ function pokemonApiRender (req, res) {
         //console.log('presort nameArray', nameArray);
         nameArray.sort();
         //results.body.results.sort((a, b) => (a[name] > b[name]) ? 1 : -1);
-        console.log('sorted nameArray', nameArray);
+        // console.log('sorted nameArray', nameArray);
         res.render('pages/searches/show', { apiResults: nameArray});
 
       })
@@ -110,7 +110,7 @@ function saveFavorite (req, res) {
 
 function showFavorites (req, res) {
   try {
-    let SQL = 'SELECT * FROM pokemon';
+    let SQL = 'SELECT DISTINCT name FROM pokemon';
     client.query(SQL)
       .then(result => {
         //console.log('result.rows', result.rows);
@@ -120,7 +120,7 @@ function showFavorites (req, res) {
           storedPoke.push(row.name);
         })
         storedPoke.sort();
-        console.log('storedPoke', storedPoke);
+        // console.log('storedPoke', storedPoke);
         res.render('pages/favorites', { savedPokemon: storedPoke });
       })
       .catch(err => {
