@@ -1,5 +1,7 @@
 # 301 Final Exam Application
 
+## Author: Simon Panek
+
 ## You have been hired to create application that has the following features
 
 1. Retrieve the list of Pokemon from an API
