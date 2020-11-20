@@ -45,17 +45,33 @@ client.connect()
 
 // Functions ///////////////////////////////////////////////////
 
+//let AllPokemonArray = []; //global variable
+
 function pokemonApiRender (req, res) {
   try {
     let url = 'https://pokeapi.co/api/v2/pokemon/';
 
     superagent.get(url)
       .then (data => {
-        console.log('data.body', data.body);
-        return data.body.results.map(pokemonCharacter => new Pokemon (pokemonCharacter.name));
+        //console.log('data.body', data.body);
+        //console.log('pokemonCharacter.name', data.body.results[0].name);
+        let testArray = [];
+        data.body.results.map(pokemonCharacter => {
+          //console.log('pokeChar.name', pokemonCharacter.name);
+          testArray.push(new Pokemon (pokemonCharacter));
+        })
+        //console.log('testArray', testArray);
+        return testArray;
       })
       .then(results => {
-        //res.render('pages/show, { apiResults: data});
+        //results = ['g', 'c', 'z', 'k', 'a', 'l', 'd', 's'];
+        // console.log('results', results);
+        let nameArray = results.map (a => a.name);
+        //console.log('presort nameArray', nameArray);
+        nameArray.sort();
+        //results.body.results.sort((a, b) => (a[name] > b[name]) ? 1 : -1);
+        console.log('sorted nameArray', nameArray);
+        res.render('pages/show', { apiResults: nameArray});
 
       })
       .catch(err => {
@@ -68,4 +84,8 @@ function pokemonApiRender (req, res) {
 
 }
 
-function Pokemon()
+function Pokemon(info) {
+  this.name = info.name;
+  //AllPokemonArray.push(this);
+  //console.log('this.name', this.name);
+}
