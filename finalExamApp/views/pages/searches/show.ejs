@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pokemon List from API</title>
+    <link href="" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header>
+
+    </header>
+    <main>
+      <section>
+        <% for (let i=0; i < apiResults.length; i++){ %>
+        <form action="/pokemon">
+          <h2><%= apiResults[i]%></h2>
+          <input type="hidden" name="name" value="<%= apiResults[i]%>">
+          <button>Add to Favorites</button>
+        </form>
+      </section>
+    <% } %>
+    </main>
+  </body>
+</html>
