@@ -1,11 +1,9 @@
-/* @media (min-width: 360px) { */
-  body {
-    min-width: 360 px;
-    background-color: rgb(22, 65, 22);
-    /* min-height: 740px;
-    max-height: 740px; */
-  }
-/* } */
+
+body {
+  min-width: 360 px;
+  background-color: rgb(22, 65, 22);
+}
+
 
 header {
   background-color: rgb(19, 19, 19);
