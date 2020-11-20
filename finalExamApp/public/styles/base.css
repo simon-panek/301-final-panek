@@ -25,3 +25,19 @@ button:hover {
 	background-color: black;
 	color: rgb(196, 193, 193);
 }
+
+header a {
+	color: yellow;
+	background-color: rgb(87,87,87);
+	position: absolute;
+	top: 2vw;
+	left:2vw;
+	font-size: 2vw;
+	height: 3vw;
+	/* width: 7vw; */
+	line-height: 3vw;
+	padding: 1vw;
+	border-radius: 5px;
+	text-decoration: none;
+	color: whitesmoke;
+}
