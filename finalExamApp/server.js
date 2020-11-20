@@ -71,7 +71,7 @@ function pokemonApiRender (req, res) {
         nameArray.sort();
         //results.body.results.sort((a, b) => (a[name] > b[name]) ? 1 : -1);
         console.log('sorted nameArray', nameArray);
-        res.render('pages/show', { apiResults: nameArray});
+        res.render('pages/searches/show', { apiResults: nameArray});
 
       })
       .catch(err => {
