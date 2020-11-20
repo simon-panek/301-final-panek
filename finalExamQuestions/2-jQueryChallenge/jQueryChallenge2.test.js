@@ -11,7 +11,7 @@ Oh no! You forgot to add a legend to your form.
 Write a function named generateLegend that adds a legend to your form using jQuery.
  - Your legend should say, "About You".
 
-Once you are finished, don't foget to append it to the form.
+Once you are finished, don't forget to append it to the form.
 
 Remember, in this test, $ is jQuery, just as it is in a normal web app
 --------------------------------------------------------------------------
