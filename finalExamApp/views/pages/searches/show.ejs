@@ -11,7 +11,7 @@
     <main>
       <section>
         <% for (let i=0; i < apiResults.length; i++){ %>
-        <form action="/pokemon">
+        <form action="/pokemon" method="post">
           <h2><%= apiResults[i]%></h2>
           <input type="hidden" name="name" value="<%= apiResults[i]%>">
           <button>Add to Favorites</button>
